@@ -4,6 +4,7 @@ import {PostsComponent} from "./components/posts.component.js" //компоне�
 import {CreateComponent} from "./components/create.component.js" //компонента отвечающая за показ блока с id create
 import {FavoriteComponent} from "./components/favorite.component.js" //компонента отвечающая за показ блока с id favorite
 
+
 new HeaderComponent('header') //создаем компоненту header
 
 const navigation = new NavigationComponent('navigation') //создаем компоненту navigation
