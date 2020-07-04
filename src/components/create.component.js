@@ -11,6 +11,7 @@ export class CreateComponent extends Component {
         this.$el.addEventListener('submit', submitHandler.bind(this))
 
         this.form = new Form(this.$el, { //создаем класс form, передаем в него сам элемент формы и объект с валидаторами
+            //название ключей обязательно совпадает с именами импутов формы, для простоты обработки
             title: [Validators.required],
             fulltext: [Validators.required, Validators.minLength(10)]
         })
@@ -25,9 +26,9 @@ function submitHandler(event) {
             type: this.$el.type.value, //сохраняем значение из поля формы с селектом
             ...this.form.value() //получаем остальные значения из формы
         }
+
+        this.form.clear()
+
         console.log('Submit', formData)
-    }
-    else {
-        console.warn('Form is invalid')
     }
 }
