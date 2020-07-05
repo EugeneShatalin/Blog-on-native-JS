@@ -9,13 +9,28 @@ class ApiService {
                 method: 'post',
                 body: JSON.stringify(post)
             })
-            const response = await fetch(request)
-            return await response.json()
+            return useRequest(request)
         } catch (error) {
             console.error(error)
         }
+    }
 
+    async fetchPosts() { //метод для получения данных с сервера
+        try {
+            const request = new Request(`${this.url}/post.json`, {
+                method: 'get' //можно не указывать, идёт по умолчанию
+            })
+            return useRequest(request)
+        }
+         catch (error) {
+            console.error(error)
+        }
     }
 }
 
-export const apiService = new ApiService('https://js-blog-sh.firebaseio.com')
+async function useRequest(request) {
+    const response = await fetch(request)
+    return await response.json()
+}
+
+export const apiService = new ApiService('https://js-blog-sh.firebaseio.com') //базовый URL

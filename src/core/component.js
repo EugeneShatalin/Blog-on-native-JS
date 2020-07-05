@@ -6,11 +6,21 @@ export class Component {
 
     init() {} //пустой метод для реализации логики в дочерних классах
 
+    onHide() {
+
+    }
+
+    onShow() {
+
+    }
+
     hide() {
         this.$el.classList.add('hide') //добавляем элементу класс hide
+        this.onHide()
     }
 
     show() {
         this.$el.classList.remove('hide') //удаляем элементу класс hide
+        this.onShow()
     }
 }
