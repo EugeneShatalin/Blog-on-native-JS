@@ -22,7 +22,19 @@ class ApiService {
             })
             return useRequest(request)
         }
-         catch (error) {
+        catch (error) {
+            console.error(error)
+        }
+    }
+
+    async fetchPostById(id) { //метод для получения данных с сервера одного поста по id
+        try {
+            const request = new Request(`${this.url}/post/${id}.json`, {
+                method: 'get' //можно не указывать, идёт по умолчанию
+            })
+            return useRequest(request)
+        }
+        catch (error) {
             console.error(error)
         }
     }

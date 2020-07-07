@@ -14,7 +14,7 @@ const loader = new LoaderComponent('loader') //создаем компонент
 //создаем переменные содержащие с себе компоненты для удобства дальнейшего использования
 const posts = new PostsComponent('posts', {loader})
 const create = new CreateComponent('create')
-const favorite = new FavoriteComponent('favorite')
+const favorite = new FavoriteComponent('favorite', {loader})
 
 //передаем все три пункта меню (табы) в массив
 navigation.registerTabs([
