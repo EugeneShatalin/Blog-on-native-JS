@@ -30,20 +30,22 @@ export class PostsComponent extends Component {
 function buttonHandler(event) { //обработка килка по кнопке
     const $el = event.target //сохраняем в $el элемент по которому произошел клик
     const id = $el.dataset.id //присваеваем id хранящийся в data-id элемента по которому произошел клик, если такой параметр у него имеется
+    const title = $el.dataset.title //сохраняем в переменную имя поста
 
     if(id) {
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [] //берем данные из localStorage, если их нет, присваиваем пустой массив
+        const candidate = favorites.find(p => p.id === id)
 
-       if (favorites.includes(id)) { //если в массиве favorites нет текущего id
+       if (candidate) { //если в массиве favorites нет текущего id
            $el.textContent = 'Сохранить'
            $el.classList.add('button-primary')
            $el.classList.remove('button-danger')
-           favorites = favorites.filter(fid => fid != id)
+           favorites = favorites.filter(p => p.id != id)
        } else { //если в массиве favorites есть текущий id
            $el.classList.add('button-danger')
            $el.classList.remove('button-primary')
            $el.textContent = 'Удалить'
-           favorites.push(id)
+           favorites.push({id, title})
        }
        localStorage.setItem('favorites', JSON.stringify(favorites)) //сохраняем в localStorage обновленные данные по id
     }
